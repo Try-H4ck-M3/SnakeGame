@@ -14,7 +14,6 @@ surface = pygame.display.set_mode([RES, RES])
 clock = pygame.time.Clock()
 
 eat_sound = pygame.mixer.Sound("eat.mp3")
-back_sound = pygame.mixer.music.load('back.wav')
 lost_sound = pygame.mixer.Sound('lost.mp3')
 lost_sound.set_volume(0.35)
 button_sound = pygame.mixer.Sound('button.mp3')
@@ -43,6 +42,9 @@ def close_game():
 
 def play_main():
 
+    pygame.mixer.music.load('back.wav')
+
+    pygame.mixer.music.set_volume(1)
     pygame.mixer.music.pause()
     pygame.mixer.music.play(-1)
 
@@ -159,6 +161,10 @@ start_button = button.Button(100, 200, start_img, 0.8)
 exit_button = button.Button(450, 200, exit_img, 0.8)
 
 run = True
+menu_music = pygame.mixer.music.load('menu.mp3')
+pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.pause()
+pygame.mixer.music.play(-1)
 while run:
     
     surface.blit(menu_img, (0, 0))
