@@ -17,6 +17,8 @@ eat_sound = pygame.mixer.Sound("eat.mp3")
 back_sound = pygame.mixer.music.load('back.wav')
 lost_sound = pygame.mixer.Sound('lost.mp3')
 lost_sound.set_volume(0.35)
+button_sound = pygame.mixer.Sound('button.mp3')
+button_sound.set_volume(1.2)
 
 font_score = pygame.font.SysFont('Arial', 26, bold=True)
 font_end = pygame.font.SysFont('Arial', 66, bold=True)
@@ -118,8 +120,10 @@ def play_main():
                 lost = True
             move = False
             if restart_button.draw(surface):
+                pygame.mixer.Sound.play(button_sound)
                 play_main()
             elif exit_button.draw(surface):
+                 pygame.mixer.Sound.play(button_sound)
                  close_game()
                  pygame.quit()
                  exit(0)
@@ -162,8 +166,10 @@ while run:
     surface.blit(render_title, (RES // 2 - 150, RES // 3 - 150))
 
     if start_button.draw(surface):
+        pygame.mixer.Sound.play(button_sound)
         play_main()
     if exit_button.draw(surface):
+        pygame.mixer.Sound.play(button_sound)
         pygame.quit()
         exit(0)
 
